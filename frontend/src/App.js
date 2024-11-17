@@ -41,7 +41,7 @@ import Contact from './Component/Contact/Contact.js'
 import About from './Component/About/About.js'
 import axios from 'axios';
 import NotFound from './Component/layout/NotFound/NotFound';
-
+import {BACKEND} from './backend_url.js'
 
 function App() {
   const {isAuthenticated,user} = useSelector(state=>state.userReducer)
@@ -50,7 +50,7 @@ function App() {
    async function getApiKey()
   {
     
-    let {data}=await axios.get("/api/v1/stripeapikey")
+    let {data}=await axios.get(`${BACKEND}/api/v1/stripeapikey`)
     setStripeApiKey(data.stripeApiKey)
   }
 
