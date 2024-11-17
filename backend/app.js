@@ -9,7 +9,7 @@ const fileUpload=require('express-fileupload')
 const path = require("path");
 
 app.use(cors({
-  origin:"*",
+  origin:"https://shopbuzz-hazel.vercel.app",
   methods:"*",
   credentials:true
 
