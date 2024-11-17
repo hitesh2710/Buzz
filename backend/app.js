@@ -10,7 +10,7 @@ const path = require("path");
 
 app.use(cors({
   origin:"https://shopbuzz-hazel.vercel.app",
-  methods:"*",
+  methods: ["GET", "POST", "PUT", "DELETE"],
   credentials:true
 
 }))
