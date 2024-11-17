@@ -18,6 +18,7 @@ import {
   useElements,
 } from "@stripe/react-stripe-js";
 import { newOrder } from "../../actions/orderAction";
+import {BACKEND} from '../../backend_url'
 function Payment() {
   const navigate = useNavigate();
   const dispatch=useDispatch()
@@ -53,7 +54,7 @@ function Payment() {
         },
       };
       const { data } = await axios.post(
-        "/api/v1/payment/process",
+        `${BACKEND}/api/v1/payment/process`,
         paymentData,
         config
       );

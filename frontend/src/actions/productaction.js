@@ -30,17 +30,17 @@ import {
 } from "../constants/productConstants";
 
 import axios from "axios";
-
+import { BACKEND } from "../backend_url";
 // Get Products
 export const getProduct =
   (keyword = "", currentPage = 1, price = [0, 50000], category, rating = 0) =>
   async (dispatch) => {
     try {
       dispatch({ type: ALL_PRODUCT_REQUEST });
-      let link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&rating[gte]=${rating}`;
+      let link = `${BACKEND}/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&rating[gte]=${rating}`;
 
       if (category) {
-        link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&category=${category}&rating[gte]=${rating}`;
+        link = `${BACKEND}/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&category=${category}&rating[gte]=${rating}`;
       }
       //  Small version of postman
       const { data } = await axios.get(link);
@@ -58,7 +58,7 @@ export const getProduct =
 export const getProductDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_DETAILS_REQUEST });
-    const link = `/api/v1/product/${id}`;
+    const link = `${BACKEND}/api/v1/product/${id}`;
 
     //  Small version of postman
     const { data } = await axios.get(link);
@@ -76,7 +76,7 @@ export const getProductDetails = (id) => async (dispatch) => {
 export const getAdminProduct = () => async (dispatch) => {
   try {
     dispatch({ type: ADMIN_PRODUCT_REQUEST });
-    const link = `/api/v1/admin/products`;
+    const link = `${BACKEND}/api/v1/admin/products`;
 
     //  Small version of postman
     const { data } = await axios.get(link);
@@ -94,7 +94,7 @@ export const getAdminProduct = () => async (dispatch) => {
 export const newReview = (reviewData) => async (dispatch) => {
   try {
     dispatch({ type: NEW_REVIEW_REQUEST });
-    const link = `/api/v1/review`;
+    const link = `${BACKEND}/api/v1/review`;
 
     const config = {
       headers: {
@@ -115,7 +115,7 @@ export const newReview = (reviewData) => async (dispatch) => {
 export const getAllReview = (id) => async (dispatch) => {
   try {
     dispatch({ type: ALL_REVIEW_REQUEST });
-    const link = `/api/v1/getReviews?productId=${id}`;
+    const link = `${BACKEND}/api/v1/getReviews?productId=${id}`;
 
     const { data } = await axios.get(link);
     dispatch({ type: ALL_REVIEW_SUCCESS, payload: data.review });
@@ -131,7 +131,7 @@ export const getAllReview = (id) => async (dispatch) => {
 export const deleteReview = (id, productId) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_REVIEW_REQUEST });
-    const link = `/api/v1/getReviews?productId=${productId}&id=${id}`;
+    const link = `${BACKEND}/api/v1/getReviews?productId=${productId}&id=${id}`;
     const { data } = await axios.delete(link);
     dispatch({ type: DELETE_REVIEW_SUCCESS, payload: data.success });
   } catch (error) {
@@ -146,7 +146,7 @@ export const deleteReview = (id, productId) => async (dispatch) => {
 export const newProduct = (productData) => async (dispatch) => {
   try {
     dispatch({ type: NEW_PRODUCT_REQUEST });
-    const link = `/api/v1/admin/product/new`;
+    const link = `${BACKEND}/api/v1/admin/product/new`;
 
     const config = {
       headers: {
@@ -167,7 +167,7 @@ export const newProduct = (productData) => async (dispatch) => {
 export const deleteProduct = (id) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_PRODUCT_REQUEST });
-    const link = `/api/v1/admin/product/${id}`;
+    const link = `${BACKEND}/api/v1/admin/product/${id}`;
 
     const { data } = await axios.delete(link);
 
@@ -184,7 +184,7 @@ export const deleteProduct = (id) => async (dispatch) => {
 export const updatingProduct = (id, productData) => async (dispatch) => {
   try {
     dispatch({ type: UPDATE_PRODUCT_REQUEST });
-    const link = `/api/v1/admin/product/${id}`;
+    const link = `${BACKEND}/api/v1/admin/product/${id}`;
 
     const config = {
       headers: {

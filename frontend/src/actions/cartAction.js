@@ -1,10 +1,14 @@
 import axios from "axios";
-import { ADD_TO_CART, REMOVE_FROM_CART, SAVE_SHIPPING_INFO } from "../constants/cart";
-
+import {
+  ADD_TO_CART,
+  REMOVE_FROM_CART,
+  SAVE_SHIPPING_INFO,
+} from "../constants/cart";
+import { BACKEND } from "../backend_url";
 // Add to Cart
 export const addProductToCart =
   (id, quantity) => async (dispatch, getState) => {
-    const link = `/api/v1/product/${id}`;
+    const link = `${BACKEND}/api/v1/product/${id}`;
 
     //  Small version of postman
     const { data } = await axios.get(link);
@@ -39,10 +43,13 @@ export const removeProductFromCart = (id) => async (dispatch, getState) => {
 
 //Saving Shipping Info
 
-export const saveShippingInfo = (data) => async (dispatch,getState) => {
+export const saveShippingInfo = (data) => async (dispatch, getState) => {
   dispatch({
-    type:SAVE_SHIPPING_INFO,
-    payload:data
+    type: SAVE_SHIPPING_INFO,
+    payload: data,
   });
-  localStorage.setItem("shippingInfo",JSON.stringify(getState().cartReducer.shippingInfo))
+  localStorage.setItem(
+    "shippingInfo",
+    JSON.stringify(getState().cartReducer.shippingInfo)
+  );
 };

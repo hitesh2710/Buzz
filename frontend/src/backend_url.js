@@ -1,0 +1,1 @@
+export const BACKEND="https://buzz-u2c3.onrender.com"
