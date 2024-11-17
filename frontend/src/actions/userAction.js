@@ -42,7 +42,7 @@ import { BACKEND } from "../backend_url";
 // LOGIN
 export const login = (email, password) => async (dispatch) => {
   try {
-    const config = { headers: { "Content-Type": "application/json" } };
+    const config = { headers: { "Content-Type": "application/json" },withCredentials: true };
     dispatch({ type: LOGIN_REQUEST });
     const { data } = await axios.post(
       `${BACKEND}/api/v1/login`,
