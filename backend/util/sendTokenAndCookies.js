@@ -10,8 +10,6 @@ const sendTokenAndCookies=(user,statusCode,res)=>{
             Date.now() + process.env.cookieExpire*24*60*60*1000
         ),
         httpOnly:true,
-        secure:true,
-        sameSite:"none",
     }
 
     res.status(statusCode).cookie('token',token,options).json({
