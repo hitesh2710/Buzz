@@ -54,7 +54,7 @@ function App() {
     setStripeApiKey(data.stripeApiKey)
   }
 
-  window.addEventListener("contextmenu",(e)=>e.preventDefault())
+  // window.addEventListener("contextmenu",(e)=>e.preventDefault())
   useEffect(()=>
   {
     WebFont.load({
